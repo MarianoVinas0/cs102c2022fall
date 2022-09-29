@@ -24,6 +24,7 @@ fprintf(stdout,"%5d",array[i][j]);
 }
 fprintf(stdout,"\n");
 }
+fprintf(stdout,"\n");
 }
 
 void add(int a[5][5],int b[5][5],int c[5][5])
