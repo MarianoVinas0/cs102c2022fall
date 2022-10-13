@@ -33,7 +33,7 @@ for(int i=0; i<8; i++)
 fprintf(stdout, "<tr>");
 for(int j=0; j<12; j++)
 {
-fprintf(stdout, "<td> %d </td>", array[i][j]);
+fprintf(stdout, "<td> %5d </td>", array[i][j]);
 }
 fprintf(stdout, "</tr> \n");
 }
@@ -48,7 +48,7 @@ for(int i=0; i<12; i++)
 fprintf(stdout, "<tr>");
 for(int j=0; j<8; j++)
 {
-fprintf(stdout, "<td> %d </td>", array[i][j]);
+fprintf(stdout, "<td> %5d </td>", array[i][j]);
 }
 fprintf(stdout, "</tr> \n");
 }
@@ -63,7 +63,7 @@ for(int i=0; i<12; i++)
 fprintf(stdout, "<tr>");
 for(int j=0; j<12; j++)
 {
-fprintf(stdout, "<td> %d </td>", array[i][j]);
+fprintf(stdout, "<td> %7d </td>", array[i][j]);
 }
 fprintf(stdout, "</tr> \n");
 }

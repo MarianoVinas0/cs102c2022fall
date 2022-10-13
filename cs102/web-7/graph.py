@@ -1,5 +1,5 @@
 #!/usr/bin/python
-print("Content-type: text/html")
+print("Content-type: text/html\n\n")
 print("<html>")
 print("<head>")
 print("<title>Graph</title>")
@@ -31,7 +31,7 @@ print("<table>")
 print("<tr><th> f(x) </th><th> fprime(x) </th><th> fsum(x) </th><th> fdoubleprime(x) </th></tr>")
 while(x<=200):
     fsum += fint(x)
-    print("<tr><td> %d </td><td> %d </td><td> %d </td><td> %d </td><tr>", f(x), fprime(x), fsum, fdprime(x))
+    print("<tr><td> %d </td><td> %d </td><td> %d </td><td> %d </td><tr>" % (f(x), fprime(x), fsum, fdprime(x)))
     x += 1
 print("</table>")
 print("</body>")
