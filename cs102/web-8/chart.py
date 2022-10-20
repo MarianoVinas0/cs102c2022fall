@@ -7,7 +7,7 @@ print("Content-type: text/html\n\n")
 print("<html>")
 print("<head>")
 print("<title>Graph</title>")
-print("<h1>Homework 8</h1>")
+print("<h1>Homework 8 | Mariano Vinas | CS102C</h1>")
 
 print( """
 <script src="chart.js" type="text/javascript"></script>
