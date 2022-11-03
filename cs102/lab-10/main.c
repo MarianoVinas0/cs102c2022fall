@@ -11,7 +11,11 @@ int main(int argc, char **argv)
   char scratch[1024];
   while (fgets(scratch, 1024, stdin) != NULL)
   {
-    if(scratch[0] == 'l'){
+    if(sscanf(scratch, "load %s", word) == 1)
+    {
+      load(word);
+    }
+    else if(scratch[0] == 'l'){
       move_left();
     }
     else if(scratch[0] == 'r'){
@@ -29,10 +33,10 @@ int main(int argc, char **argv)
     {
       save(word);
     } 
-    else if(sscanf(scratch, "load %s", word) == 1)
+    else if(sscanf(scratch, "x %d", &i) == 1)
     {
-      load(word);
-    }
+      set_location_x(i);
+    } 
     print_maze();
   }
   move_right();

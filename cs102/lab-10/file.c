@@ -16,6 +16,9 @@ void load(char* filename)
       if( sscanf(scratchpad, "WALL %d", &i) == 1 ) {
         build_wall(i);
       }
+      else if(sscanf(scratchpad, "X %d", &i) == 1) {
+        set_location_x(i);
+      }
     }
   }
 }
@@ -30,6 +33,7 @@ void save(char* filename)
     if(is_wall(x)){
       fprintf(f, "WALL %d \n", x);
     }
-  }    
+  } 
+  fprintf(f, "X %d", get_location_x());   
   fclose(f);
 }
