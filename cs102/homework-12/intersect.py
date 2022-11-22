@@ -20,14 +20,28 @@ def between( n, first, second ):
     return False
 
 def edges( sx, sy, ex, ey ):
-    return( (sx,sy,ex,sy), (ex,sy,ex,ey), (ex,ey,sx,sy), (sx,ey,sx,sy) )
+    return( (sx,sy,ex,sy), (ex,sy,ex,ey), (ex,ey,sx,ey), (sx,ey,sx,sy) )
 
 def intersectAny( oneline, listoflines ):
-    print(oneline)
     for thing in listoflines:
         if ( intersect(*oneline, *thing)):
             return True
     return False
+
+def hits(sx1,sy1,ex1,ey1,sx2,sy2,ex2,ey2):
+    box1 = edges( sx1, sy1, ex1, ey1 )
+    box2 = edges( sx2, sy2, ex2, ey2 )
+    hitlist = []
+    for edge in box2:
+        if ( intersect(*box1[0], *edge ) and not 'N' in hitlist ):
+            hitlist.append('N')
+        if ( intersect(*box1[1], *edge ) and not 'E' in hitlist ):
+            hitlist.append('E')
+        if ( intersect(*box1[2], *edge ) and not 'S' in hitlist ):
+            hitlist.append('S')
+        if ( intersect(*box1[3], *edge ) and not 'W' in hitlist ):
+            hitlist.append('W')
+    return hitlist
 
 if __name__ == '__main__':
     print( intersect( -1, 2, 1, -1, 1, 1, -2, -1 ) )
@@ -44,6 +58,24 @@ if __name__ == '__main__':
     box1 = (1.5, 1, 9, 10)
     print(edges(*box1))
 
-    box2 = (0, 0, .5, .5)
-    box3 = (0, 0, 5, 5)
+    box2 = ( 0, 0, .5, .5 )
+    box3 = ( 0, 0, 5, 5 )
+    box4 = ( 0, 0, 11,  2 )
+    box5 = ( 0, 0, 11, 11 )
+    box6 = ( 3, 3,  4,  4 )
+    box7 = ( 4, 0,  5,  5 )
+    
     print(intersectAny(box1, (box2, box3)))
+    print(intersectAny(box1, (box2,     )))
+    print(intersectAny(box1, (box4, box5)))
+    print(intersectAny(box1, (box4,     )))
+    print(intersectAny(box1, (box6, box7)))
+    print(intersectAny(box1, (box6,     )))
+
+    print( hits( *(box1+box2) ) )
+    print( hits( *(box1+box3) ) )
+    print( hits( *(box1+box4) ) )
+    print( hits( *(box1+box5) ) )
+    print( hits( *(box1+box6) ) )
+    print( hits( *(box1+box7) ) )
+ 
