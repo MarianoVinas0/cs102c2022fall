@@ -25,7 +25,7 @@ def edges( sx, sy, ex, ey ):
 def intersectAny( oneline, listoflines ):
     print(oneline)
     for thing in listoflines:
-        if ( intersect(oneline, thing)):
+        if ( intersect(*oneline, *thing)):
             return True
     return False
 
