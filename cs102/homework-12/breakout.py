@@ -18,7 +18,7 @@ class MyCanvas(Canvas):
         this.ball_velocity_y = 3
         this.bind( "<Motion>", this.mouseHasMoved )
         this.makeBlock(225, 175)
-        this.makeBlock(225, 275)
+        this.makeBlock(125, 275)
         this.makeBlock(325, 275)
 
         
@@ -32,10 +32,12 @@ class MyCanvas(Canvas):
 
         if (sx < 0 or sx > 500):
             this.ball_velocity_x = -this.ball_velocity_x
-        if (sy < 0 or (abs(sy-sy2) < 10 and abs(sx-sx2) < 50)):
+        if (sy < 0):
             this.ball_velocity_y = -this.ball_velocity_y
         if (sy > 500):
             raise(Exception("GAME OVER"))
+        if 'N' in hits( *this.coords(this.rect), *this.coords(this.ball) ) :
+                this.ball_velocity_y = -abs(this.ball_velocity_y)
 
         for block in allblocks:
             sx3, sy3, ex3, ey3 = this.coords(block)
@@ -45,7 +47,13 @@ class MyCanvas(Canvas):
             if 'S' in hits( *this.coords(block), *this.coords(this.ball) ) :
                 this.ball_velocity_y = abs(this.ball_velocity_y)
 
-            if (not len(hits( *this.coords(block), *this.coords(this.ball)) == 0)):
+            if 'E' in hits( *this.coords(block), *this.coords(this.ball) ) :
+                this.ball_velocity_x = abs(this.ball_velocity_x)    
+
+            if 'W' in hits( *this.coords(block), *this.coords(this.ball) ) :
+                this.ball_velocity_x = -abs(this.ball_velocity_x)
+
+            if (not len(hits( *this.coords(block), *this.coords(this.ball))) == 0):
                 this.delete(block)
 
         if (len(allblocks) == 0):
@@ -68,7 +76,7 @@ class MyCanvas(Canvas):
         return this.create_rectangle(x, y, x+50, y+10, fill=color)
 
     def makeBlock( this, x, y, color="red"):
-        return this.create_rectangle(x, y, x+50, y+10, fill=color, tags="block")    
+        return this.create_rectangle(x, y, x+30, y+30, fill=color, tags="block")    
         
 canvas = MyCanvas( root, width=500, height=500 )
 canvas.pack()
