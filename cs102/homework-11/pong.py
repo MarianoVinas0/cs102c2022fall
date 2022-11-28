@@ -21,7 +21,7 @@ class MyCanvas(Canvas):
 
         if (sx < 0 or sx > 500):
             this.ball_velocity_x = -this.ball_velocity_x
-        if (sy < 0 or (abs(sy-sy2) < 5 and abs(sx-sx2) < 25)):
+        if (sy < 0 or (abs(sy-sy2) < 10 and abs(sx-sx2) < 30)):
             this.ball_velocity_y = -this.ball_velocity_y
         if (sy > 500):
             raise(Exception("GAME OVER"))
